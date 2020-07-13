@@ -3,6 +3,8 @@ import AddBtn from './components/AddBtn'
 import Home from './views/Home'
 import Login from './views/Login'
 import Stories from './views/Stories'
+import StoryEdit from './views/StoryEdit'
+import Story from './views/Story'
 import Dashboard from './views/Dashboard'
 
 export const routes = [
@@ -23,5 +25,13 @@ export const routes = [
     default: Stories,
     'header': Header,
     'add-btn': AddBtn
+  }},
+  { path: '/story/edit/:id', components: {
+    default: StoryEdit,
+    'header': Header
+  }},
+  { path: '/story/:id', components: {
+    default: Story,
+    'header': Header
   }}
 ];
