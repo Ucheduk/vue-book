@@ -3,13 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA5ePLSkd9A_l62PxPNMu6jzEK7x4qLyRs",
-  authDomain: "sweet-burger.firebaseapp.com",
-  databaseURL: "https://sweet-burger.firebaseio.com",
-  projectId: "sweet-burger",
-  storageBucket: "sweet-burger.appspot.com",
-  messagingSenderId: "914138347997",
-  appId: "1:914138347997:web:f7e85724f231f868609e34"
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_FIREBASE_APP_ID,
 };
 
 firebase.initializeApp(firebaseConfig);

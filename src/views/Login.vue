@@ -16,11 +16,6 @@ import * as types from '../store/types';
 
 export default {
   name: 'Login',
-  data() {
-    return {
-      user:  this.$store.getters[types.SELECT_CURRENT_USER]
-    }
-  },
   methods: {
     async signIn() {
       console.log('signIn')
