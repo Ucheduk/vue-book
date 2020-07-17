@@ -18,7 +18,6 @@ export default {
   name: 'Login',
   methods: {
     async signIn() {
-      console.log('signIn')
       const user = await this.$store.dispatch(types.GOOGLE_SIGN_IN_START);
       if (user) this.$router.replace('dashboard')
     }

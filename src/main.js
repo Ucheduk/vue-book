@@ -28,9 +28,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('beforeEach')
   const currentUser = firebase.auth().currentUser;
-  console.log(currentUser)
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   if (requiresAuth && !currentUser) next('login')
   else if (!requiresAuth && currentUser) next('dashboard')
@@ -42,7 +40,6 @@ Vue.config.productionTip = false
 let app;
 
 firebase.auth().onAuthStateChanged(user => {
-  console.log('hello')
   store.dispatch(types.CHECK_USER_SESSION, user);
   if(!app) app = new Vue({
     router,

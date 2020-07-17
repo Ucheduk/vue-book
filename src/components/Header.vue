@@ -9,9 +9,10 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <router-link to="/dashboard">Dashboard</router-link>
-          <router-link to="/stories">All Stories</router-link>
-          <router-link to="/login">Login</router-link>
+          <router-link v-if="user" to="/dashboard">Dashboard</router-link>
+          <router-link v-if="user" to="/stories">All Stories</router-link>
+          <a v-if="user" @click="logout">Logout</a>
+          <router-link v-else to="/login">Login</router-link>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -19,8 +20,22 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+import * as types from '../store/types';
+
 export default {
- name: 'Header'
+ name: 'Header',
+ computed: {
+  ...mapGetters({
+      user: types.SELECT_CURRENT_USER
+  })
+ },
+ methods: {
+  async logout() {
+    await this.$store.dispatch(types.SIGN_OUT_START);
+    this.$router.replace('/')
+  }
+ }
 }
 </script>
 
@@ -33,6 +48,9 @@ export default {
   a {
     color: #fff;
     margin: 0 10px;
+  }
+  a:not([href]) {
+    color: #fff;
   }
   a:hover {
     color: var(--blue);
