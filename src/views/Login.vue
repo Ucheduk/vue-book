@@ -5,18 +5,27 @@
         <b-card-title><b-icon-book-half></b-icon-book-half> VueBook</b-card-title>
         <b-card-text>Create public and private stories from your daliy activties</b-card-text>
         <hr>
-        <router-link to="/login" class="btn btn-primary">Login or Signup with Google</router-link>
+        <a @click="signIn" class="btn btn-primary">Login or Signup with Google</a>
       </b-card>
     </div>
   </div>
 </template>
 
 <script>
+import * as types from '../store/types';
+
 export default {
   name: 'Login',
   data() {
     return {
-      msg: 'Welcome to your vue book'
+      user:  this.$store.getters[types.SELECT_CURRENT_USER]
+    }
+  },
+  methods: {
+    async signIn() {
+      console.log('signIn')
+      const user = await this.$store.dispatch(types.GOOGLE_SIGN_IN_START);
+      if (user) this.$router.replace('dashboard')
     }
   }
 }

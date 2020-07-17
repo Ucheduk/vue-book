@@ -12,11 +12,13 @@
 </template>
 
 <script>
+import * as types from '../store/types';
+
 export default {
   name: 'Home',
   data() {
     return {
-      msg: 'Welcome to your vue book'
+      user: this.$store.getters[types.SELECT_CURRENT_USER],
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="dashboard" class="container">
-    <h1>Welcome Uche</h1>
+    <h1>Welcome {{ user.displayName }}</h1>
     <p>See all your stories</p>
     <b-table striped fixed borderless :fields="fields" :items="items" responsive="sm">
 
@@ -27,9 +27,13 @@
 </template>
 
 <script>
+import * as types from '../store/types';
+
   export default {
+    name: 'Dashboard',
     data() {
       return {
+        user:  this.$store.getters[types.SELECT_CURRENT_USER],
         fields: [
           // A column that needs custom formatting
           { key: 'name', label: 'Title' },
